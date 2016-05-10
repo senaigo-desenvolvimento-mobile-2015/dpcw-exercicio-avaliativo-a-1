@@ -1,43 +1,67 @@
 /**
-* Principal
+* Controlador Principal
 */
-if(typeof(Storage) !== "undefined") {
-
-    var id = document.getElementById("identificador");
-    var nome = document.getElementById("nome");
-    var endereco = document.getElementById("endereco");
-    var telefone = document.getElementById("telefone");
-    var cpf = document.getElementById("cpf");
-    var cnpj = document.getElementById("cnpj");
-    var pessoafisica = document.getElementById("pessoafisica");
-    var Pessoajuridica = document.getElementById("Pessoajuridica");
-
-    /**
-    * [function description]
-    * @return {[type]} [description]
-    */
-    var salvar = function(){
-        var dao;
-        var objPessoa;
-        if(pessoafisica.checked){
-            objPessoa = new Cliente();
-            dao = new ClienteBusiness();
-            objPessoa.setCpf(cpf.value);
+/**
+* Persistencia dos dados no storage
+*/
+var salvar = function(){
+    var storageFactory = new LocalStorageFactory();
+    var objPessoa;
+    var tipoPessoa;
+    if(pessoafisica.checked){
+        tipoPessoa = "Cliente";
+        objPessoa = new Cliente();
+        objPessoa.setCpf(cpf.value);
+    }else{
+        tipoPessoa = "PessoaJuridica";
+        objPessoa = new PessoaJuridica();
+        objPessoa.setCnpj(cnpj.value);
+        objPessoa.setInscricaoEstadual(inscricaoEstadual.value);
+    }
+    objPessoa.setId(id.value);
+    objPessoa.setNome(nome.value);
+    objPessoa.setEndereco(endereco.value);
+    var objTelefone = new Telefone();
+    objTelefone.setNumero(telefone.value);
+    objPessoa.setTelefone(objTelefone.getNumero());
+    storageFactory.salvar(objPessoa, tipoPessoa);
+};
+var excluir = function(id){
+    var storageFactory = new LocalStorageFactory();
+    storageFactory.excluir(id);
+    console.log(id);
+};
+/**
+ * Lista os itens cadastrados no load da página
+ */
+var listarItens = function(){
+    var storageFactory = new LocalStorageFactory();
+    var items = storageFactory.listarTodos();
+    var key;
+    var storage;
+    var tr, td;
+    var count = 0;
+    for(key in items){
+        storage = JSON.parse(items[key]);
+        tr = listagem.insertRow(listagem.rows.length);
+        td = tr.insertCell(tr.cells.length);
+        td.innerHTML = storage.id;
+        td = tr.insertCell(tr.cells.length);
+        td.innerHTML = storage.nome;
+        td = tr.insertCell(tr.cells.length);
+        td.innerHTML = storage.endereco;
+        td = tr.insertCell(tr.cells.length);
+        td.innerHTML = storage.telefone;
+        td = tr.insertCell(tr.cells.length);
+        if(typeof storage.cpf !== 'undefined'){
+            td.innerHTML = "CPF: "+storage.cpf;
         }else{
-            objPessoa = new PessoaJuridica();
-            dao = new PessoaJuridicaBusiness();
-            objPessoa.setCnpj(cnpj.value);
+            td.innerHTML = "CNPJ: "+ storage.cnpj +' IE.:'+ storage.inscricaoEstadual;
         }
-        objPessoa.setId(id.value);
-        objPessoa.setNome(nome.value);
-        objPessoa.setEndereco(endereco.value);
-
-        var objTelefone = new Telefone();
-        objTelefone.setNumero(telefone.value);
-        objPessoa.setTelefone(objTelefone.getNumero());
-
-        dao.salvar(objPessoa);
-    };
-} else {
-    alert("Não há suporte para o armazenamento no navegador.");
-}
+        td = tr.insertCell(tr.cells.length);
+        td.setAttribute("align", "center");
+        td.innerHTML = '<button type="button" name="button" title="Editar" alt="Editar" onclick="editar('+storage.id+');">&#x261D;</button> <button type="button" name="button" title="Excluir" alt="Excluir" onclick="excluir('+storage.id+');">&#x2672;</button>';
+        count++;
+    }
+    tbFoot.innerHTML = "Total de registros: "+count;
+};

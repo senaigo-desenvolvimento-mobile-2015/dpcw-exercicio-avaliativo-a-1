@@ -70,5 +70,5 @@ $ node
 [Less CSS pre-processor]: <http://lesscss.org/>
 [Grunt]: <http://gruntjs.com/>
 [Grunt-contrib-less]: <https://www.npmjs.com/package/grunt-contrib-less>
-[Uglify]: <https://www.npmjs.com/package/uglify>
+[Uglify]: <https://www.npmjs.com/package/grunt-contrib-uglify>
 [Watch]: <https://www.npmjs.com/package/watch>

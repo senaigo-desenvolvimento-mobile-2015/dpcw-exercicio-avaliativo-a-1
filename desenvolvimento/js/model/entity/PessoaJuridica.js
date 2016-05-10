@@ -12,7 +12,7 @@ PessoaJuridica.prototype.setInscricaoEstadual = function(inscricaoEstadual){
     this.inscricaoEstadual = inscricaoEstadual;
 };
 
-PessoaJuridica.prototype.setInscricaoEstadual = function(){
+PessoaJuridica.prototype.getInscricaoEstadual = function(){
     return this.inscricaoEstadual;
 };
 
@@ -20,6 +20,6 @@ PessoaJuridica.prototype.setCnpj = function(cnpj){
     this.cnpj = cnpj;
 };
 
-PessoaJuridica.prototype.setCnpj = function(){
+PessoaJuridica.prototype.getCnpj = function(){
     return this.cnpj;
 };

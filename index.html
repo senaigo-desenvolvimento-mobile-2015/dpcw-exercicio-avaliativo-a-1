@@ -8,7 +8,7 @@
     <title>Exerc&iacute;cio Avaliativo A1</title>
     <link rel="stylesheet" href="css/main.min.css" media="screen" title="Main file" charset="utf-8">
 </head>
-<body>
+<body onload="listarItens()">
     <header>
         <section id="titleSection">
             <hgroup>
@@ -20,9 +20,8 @@
         <section id="navigation">
             <nav>
                 <ul>
-                    <li>Home</li>
-                    <li>Cadastro</li>
-                    <li>Sobre</li>
+                    <li><a href="https://github.com/senaigo-desenvolvimento-mobile-2015/dpcw-exercicio-avaliativo-a-1">C&oacute;digo fonte</a></li>
+                    <li><a href="http://fabricionogueira.eti.br" target="_blank">Sobre</a></li>
                 </ul>
             </nav>
         </section>
@@ -31,86 +30,79 @@
                 <form class="" action="javascript:void(0)" method="post">
                     <fieldset>
                         <legend>Formul&aacute;rio</legend>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="tipopessoa" id="pessoafisica" value="0" checked>
-                                Pessoa F&iacute;sica
-                            </label>
+                        <div class="row">
+                            <div class="col-1">
+                                <label class="radio">
+                                    <input type="radio" name="tipopessoa" id="pessoafisica" onClick="checkPessoaFisica()" value="0" checked>
+                                    Pessoa F&iacute;sica
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="tipopessoa" id="pessoajuridica" onClick="checkPessoaJuridica()" value="1">
+                                    Pessoa Juridica
+                                </label>
+                            </div>
                         </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="tipopessoa" id="pessoajuridica" value="1">
-                                Pessoa Juridica
-                            </label>
+                        <div class="row">
+                            <div class="col-1-4">
+                                <label for="identificador">Identificador</label>
+                                <input type="text" name="identificador" id="identificador" placeholder="Identificador da pessoa">
+                            </div>
+                            <div class="col-1-2">
+                                <label for="nome">Nome</label>
+                                <input type="text" name="nome" id="nome" placeholder="Nome da pessoa">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="identificador">Identificador</label>
-                            <input type="text" name="identificador" id="identificador">
+                        <div class="row">
+                            <div class="col-1-2">
+                                <label for="endereco">Endere&ccedil;o</label>
+                                <input type="text" name="endereco" id="endereco" placeholder="Endere&ccedil;o da pessoa">
+                            </div>
+                            <div class="col-1-2">
+                                <label for="telefone">Telefone</label>
+                                <input type="text" name="telefone" id="telefone" placeholder="Telefone para contato">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input type="text" name="nome" id="nome">
+                        <div class="row">
+                            <div id="cpfdiv" class="col-1-3">
+                                <label for="cpf">CPF</label>
+                                <input type="text" name="cpf" id="cpf" placeholder="Cadastro de pessoa fisica">
+                            </div>
+                            <div id="cnpjdiv" class="col-1-3 hidden">
+                                <label for="cnpj">CNPJ</label>
+                                <input type="text" name="cnpj" id="cnpj" placeholder="Cadastro nacional de pessoa juridica">
+                            </div>
+                            <div id="iediv" class="col-1-3 hidden">
+                                <label for="inscricaoEstadual">Inscri&ccedil;&atilde;o Estadual</label>
+                                <input type="text" name="inscricaoEstadual" id="inscricaoEstadual" placeholder="C&oacute;digo da inscri&ccedil;&atilde;o estadual">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="cpf">Cpf</label>
-                            <input type="text" name="cpf" id="cpf">
-                        </div>
-                        <div class="form-group">
-                            <label for="cnpj">Cnpj</label>
-                            <input type="text" name="cnpj" id="cnpj">
-                        </div>
-                        <div class="form-group">
-                            <label for="endereco">Endere&ccedil;o</label>
-                            <input type="text" name="endereco" id="endereco">
-                        </div>
-                        <div class="form-group">
-                            <label for="telefone">Telefone</label>
-                            <input type="text" name="telefone" id="telefone">
-                        </div>
-                        <div class="form-group">
+                        <div class="row">
                             <button type="button" name="button" onclick="salvar();">Cadastrar</button>
                         </div>
                     </fieldset>
                 </form>
             </article>
-            <article class="table">
-                <table>
-                    <caption>Pessoa Fisica</caption>
-                    <tr>
-                        <th>Identificador</th>
-                        <th>Nome</th>
-                        <th>Endere&ccedil;o</th>
-                        <th>Telefone</th>
-                        <th>Cpf</th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </article>
-            <article class="table">
-                <table>
-                    <caption>Pessoa Juridica</caption>
-                    <tr>
-                        <th>Identificador</th>
-                        <th>Nome</th>
-                        <th>Endere&ccedil;o</th>
-                        <th>Telefone</th>
-                        <th>Cnpj</th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </article>
+            <fieldset>
+                <legend>Listagem</legend>
+                <article class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Identificador</th>
+                                    <th>Nome</th>
+                                    <th>Endere&ccedil;o</th>
+                                    <th>Telefone</th>
+                                    <th>Documento</th>
+                                    <th>&#x2699;</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblistagem"></tbody>
+                            <tfoot>
+                                <td colspan="6" id="tbfoot"></td>
+                            </tfoot>
+                        </table>
+                    </article>
+            </fieldset>
         </section>
     </section>
     <footer>

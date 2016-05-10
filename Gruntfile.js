@@ -17,14 +17,17 @@
             },
             uglify: {
                 options: {
+                    preserveComments: false,
                     mangle: true,
                     report: 'gzip'
                 },
                 my_target: {
                     files: {
                         'js/main.min.js': [
+                            'desenvolvimento/js/header.js',
                             'desenvolvimento/js/*/*.js',
                             'desenvolvimento/js/*/*/*.js',
+                            'desenvolvimento/js/functions.js',
                             'desenvolvimento/js/controller.js',
                         ]
                     }

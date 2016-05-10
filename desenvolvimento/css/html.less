@@ -1,6 +1,6 @@
 /**
- * Tags html
- */
+* Tags html
+*/
 body{
     margin: 0;
     padding: 0;
@@ -8,6 +8,17 @@ body{
     background-color: @body;
     font: normal 0.9em Verdana, Geneva, sans-serif;
     color: @primary-text;
+}
+
+a{
+    color: @primary-text-link;
+    text-decoration: none;
+    &:hover{
+        text-decoration: underline dotted;
+    };
+    &:visited{
+        color: @secondary-text-link;
+    };
 }
 
 @title-font:"Arial Black", Gadget, sans-serif !important;
@@ -29,11 +40,27 @@ h4{
 }
 
 table {
-    width:100%;
+    width: 100%;
+	border-collapse: collapse;
     margin-bottom: 20px;
+    td{
+        border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+    };
+    td:before {
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	};
     th, td{
-        border-top: 1px solid @hover-color+20;
-        padding: 15px;
+        padding: 6px;
+		border: 1px solid @color-secondary;
+		text-align: left;
     };
     th{
         text-align: center;
@@ -45,24 +72,98 @@ table {
         font: @title-font;
         font-size: 1.5em;
         font-style: italic;
-    }
+    };
+    tfoot{
+        font-style: italic;
+    };
+    #tbfoot{
+        text-align: right;
+    };
 }
 
 fieldset{
-    @bstyle:1.5em solid @hover-color+20;
-    border-top: @bstyle;
+    @bstyle:1.5em solid @primary-color;
+    border: @bstyle;
     border-left: 0;
     border-right: 0;
     border-bottom: 0;
-    border-radius: 5px;
     padding: 20px;
+    margin: 0;
     legend{
+        float: right;
+        text-align:right;
         background: @accent-color;
         color: #fff;
         padding: 5px 10px ;
         font-size: 2.5em;
         border-radius: 10px;
-        border: 3px solid #fff;
-        margin-left: 20px;
+        border: 0.1em solid white;
+        position: relative;
+        bottom: 60px;
+        right: -45px;
+        &:hover{
+            .darkshadow;
+        };
+    };
+}
+
+@-moz-document url-prefix() {
+  .a legend span {
+    top: -30px !important;
+    left: 0 !important;
     }
+  }
+
+nav{
+    ul{
+
+        li{
+            display: inline;
+        };
+    };
+    a{
+        text-decoration: none;
+        color: #00F;
+        padding: 8px 8px 8px 8px;
+        &:hover{
+            color: #F90;
+            text-decoration: underline;
+        };
+    };
+}
+
+button{
+    background-color: @button-base;
+    .radius(5px);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.1em;
+    cursor: pointer;
+    &:hover{
+        background-color: @button-color-hover;
+    };
+    &:focus{
+        background-color: @button-color-focus;
+    }
+}
+
+form{
+    input[type="text"]{
+        color: #888;
+        width: 100%;
+        padding: 0px 0px 0px 5px;
+        border: 1px solid #C5E2FF;
+        background: #FBFBFB;
+        outline: 0;
+        -webkit-box-shadow:inset 0px 1px 6px #ECF3F5;
+        box-shadow: inset 0px 1px 6px #ECF3F5;
+        font: 200 12px/25px Arial, Helvetica, sans-serif;
+        height: 30px;
+        line-height:15px;
+        margin: 2px 6px 16px 0px;
+    };
 }
