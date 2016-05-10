@@ -1,0 +1,24 @@
+/**
+ * Classes de estruturação do documento
+ */
+.container{
+    width: 800px;
+	margin:0 auto;
+	text-align:left; /* "remédio" para o hack do IE */
+    background: @content-color;
+    color: @secondary-text;
+    .radius-10;
+    .darkshadow;
+}
+
+.darkshadow{
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+}
+
+.radius-10{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}

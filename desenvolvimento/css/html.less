@@ -1,0 +1,68 @@
+/**
+ * Tags html
+ */
+body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: @body;
+    font: normal 0.9em Verdana, Geneva, sans-serif;
+    color: @primary-text;
+}
+
+@title-font:"Arial Black", Gadget, sans-serif !important;
+h1{
+    font: @title-font;
+    font-size: 2.0em;
+}
+h2{
+    font: @title-font;
+    font-size: 1.6em;
+}
+h3{
+    font: @title-font;
+    font-size: 1.4em;
+}
+h4{
+    font: @title-font;
+    font-size: 1.0em;
+}
+
+table {
+    width:100%;
+    margin-bottom: 20px;
+    th, td{
+        border-top: 1px solid @hover-color+20;
+        padding: 15px;
+    };
+    th{
+        text-align: center;
+    };
+    tr:hover{
+        background-color: @hover-color;
+    };
+    caption{
+        font: @title-font;
+        font-size: 1.5em;
+        font-style: italic;
+    }
+}
+
+fieldset{
+    @bstyle:1.5em solid @hover-color+20;
+    border-top: @bstyle;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-radius: 5px;
+    padding: 20px;
+    legend{
+        background: @accent-color;
+        color: #fff;
+        padding: 5px 10px ;
+        font-size: 2.5em;
+        border-radius: 10px;
+        border: 3px solid #fff;
+        margin-left: 20px;
+    }
+}
