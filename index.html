@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="Fabricio Nogueira dos Santos">
+    <title>Exerc&iacute;cio Avaliativo A1</title>
+    <link rel="stylesheet" href="css/main.min.css" media="screen" title="Main file" charset="utf-8">
+</head>
+<body>
+    <header>
+        <section id="titleSection">
+            <hgroup>
+                <h1>Exerc&iacute;cio Avaliativo A1</h1>
+            </hgroup>
+        </section>
+    </header>
+    <section class="container">
+        <section id="navigation">
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>Cadastro</li>
+                    <li>Sobre</li>
+                </ul>
+            </nav>
+        </section>
+        <section id="sectionBody">
+            <article class="formulario">
+                <form class="" action="javascript:void(0)" method="post">
+                    <fieldset>
+                        <legend>Formul&aacute;rio</legend>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="tipopessoa" id="pessoafisica" value="0" checked>
+                                Pessoa F&iacute;sica
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="tipopessoa" id="pessoajuridica" value="1">
+                                Pessoa Juridica
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="identificador">Identificador</label>
+                            <input type="text" name="identificador" id="identificador">
+                        </div>
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" id="nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="cpf">Cpf</label>
+                            <input type="text" name="cpf" id="cpf">
+                        </div>
+                        <div class="form-group">
+                            <label for="cnpj">Cnpj</label>
+                            <input type="text" name="cnpj" id="cnpj">
+                        </div>
+                        <div class="form-group">
+                            <label for="endereco">Endere&ccedil;o</label>
+                            <input type="text" name="endereco" id="endereco">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="text" name="telefone" id="telefone">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" name="button" onclick="salvar();">Cadastrar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </article>
+            <article class="table">
+                <table>
+                    <caption>Pessoa Fisica</caption>
+                    <tr>
+                        <th>Identificador</th>
+                        <th>Nome</th>
+                        <th>Endere&ccedil;o</th>
+                        <th>Telefone</th>
+                        <th>Cpf</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </article>
+            <article class="table">
+                <table>
+                    <caption>Pessoa Juridica</caption>
+                    <tr>
+                        <th>Identificador</th>
+                        <th>Nome</th>
+                        <th>Endere&ccedil;o</th>
+                        <th>Telefone</th>
+                        <th>Cnpj</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </article>
+        </section>
+    </section>
+    <footer>
+        <section id="about">
+            <p>SENAI - Projeto e desenvolvimento de software para mobile 2016 | Desenvolvimento para cliente web - Prof. Bruno Urbano Rodrigues</p>
+            <p>&copy; <a href="http://fabricionogueira.eti.br" target="_blank">Fabricio Nogueira</a></p>
+        </section>
+    </footer>
+    <script src="js/main.min.js"></script>
+</body>
+</html>
