@@ -41,29 +41,29 @@ h4{
 
 table {
     width: 100%;
-	border-collapse: collapse;
+    border-collapse: collapse;
     margin-bottom: 20px;
     td{
         border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
     };
     td:before {
-		position: absolute;
-		top: 6px;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	};
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    };
     th, td{
         padding: 6px;
-		border: 1px solid @color-secondary;
-		text-align: left;
+        border-bottom: 1px solid @color-secondary;
+        text-align: left;
     };
     th{
-        text-align: center;
+        text-align: left;
     };
     tr:hover{
         background-color: @hover-color;
@@ -108,26 +108,31 @@ fieldset{
 }
 
 @-moz-document url-prefix() {
-  .a legend span {
-    top: -30px !important;
-    left: 0 !important;
+    .a legend span {
+        top: -30px !important;
+        left: 0 !important;
     }
-  }
+}
 
 nav{
     ul{
-
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
         li{
             display: inline;
         };
-    };
-    a{
-        text-decoration: none;
-        color: #00F;
-        padding: 8px 8px 8px 8px;
-        &:hover{
-            color: #F90;
-            text-decoration: underline;
+        a{
+            display: block;
+            color: white !important;            
+            padding: 14px 16px;
+            text-decoration: none;
+            &:hover{
+                color: #111;
+                text-decoration: underline;
+            };
         };
     };
 }
@@ -137,7 +142,7 @@ button{
     .radius(5px);
     border: none;
     color: white;
-    padding: 10px 15px;
+    padding: 0.5em 0.8em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -148,6 +153,24 @@ button{
     };
     &:focus{
         background-color: @button-color-focus;
+    };
+    &.bt-excluir{
+        background-color: @button-danger !important;
+        &:hover{
+            background-color: @button-danger-color-hover !important;
+        };
+        &:focus{
+            background-color: @button-danger-color-focus !important;
+        };
+    };
+    &.bt-editar{
+        background-color: @button-success !important;
+        &:hover{
+            background-color: @button-success-color-hover !important;
+        };
+        &:focus{
+            background-color: @button-success-color-focus !important;
+        };
     }
 }
 

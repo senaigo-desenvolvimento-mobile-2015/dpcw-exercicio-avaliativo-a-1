@@ -1,6 +1,6 @@
 /**
- * Módulos GRUNT ambiente de desenvolvimento
- */
+* Módulos GRUNT ambiente de desenvolvimento
+*/
 (function(){
     "use strict";
     module.exports = function (grunt) {
@@ -33,13 +33,25 @@
                     }
                 }
             },
+            htmlmin: {
+                dist: {
+                    options: {
+                        removeComments: true,
+                        collapseWhitespace: true
+                    },
+                    files: {
+                        'index.html': 'desenvolvimento/index.html'
+                    }
+                }
+            },
             watch : {
                 dist : {
                     files : [
+                        'desenvolvimento/index.html',
                         'desenvolvimento/js/**/*',
                         'desenvolvimento/css/**/*'
                     ],
-                    tasks : [ 'uglify', 'less' ]
+                    tasks : [ 'uglify', 'less', 'htmlmin' ]
                 }
             }
         };
@@ -47,6 +59,7 @@
         grunt.loadNpmTasks('grunt-contrib-less');
         grunt.loadNpmTasks('grunt-contrib-uglify');
         grunt.loadNpmTasks('grunt-contrib-watch');
+        grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
         grunt.initConfig(gruntConfig);
 

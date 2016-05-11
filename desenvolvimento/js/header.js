@@ -21,3 +21,4 @@ var divInscEstadual = document.getElementById("iediv");
 var divCpf = document.getElementById("cpfdiv");
 var listagem = document.getElementById("tblistagem");
 var tbFoot = document.getElementById("tbfoot");
+var tableList = document.getElementById("tableList");

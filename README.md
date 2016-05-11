@@ -20,6 +20,7 @@ Desenvolvimento para cliente web. Prof.: Bruno Urbano Rodrigues
     * [Grunt-contrib-less]
     * [Uglify]
     * [Watch]
+    * [Minify HTML]
 * [Less CSS pre-processor]
 
 ### Instalação
@@ -40,6 +41,7 @@ $ node
 ├── css
 │   └── main.min.css
 ├── desenvolvimento
+│   ├── index.html
 │   ├── css
 │   │   ├── colors.less
 │   │   ├── default-size-items.less
@@ -49,6 +51,8 @@ $ node
 │   │   ├── reset.less
 │   │   └── struct-class.less
 │   └── js
+│       ├── functions.js
+│       ├── header.js
 │       ├── controller.js
 │       └── model
 │           ├── entity
@@ -57,8 +61,7 @@ $ node
 │           │   ├── PessoaJuridica.js
 │           │   └── Telefone.js
 │           └── factory
-│               ├── clienteBusiness.js
-│               └── pessoaJuridica.js
+│               └── LocalStorageFactory.js
 ├── Gruntfile.js
 ├── index.html
 ├── js
@@ -72,3 +75,4 @@ $ node
 [Grunt-contrib-less]: <https://www.npmjs.com/package/grunt-contrib-less>
 [Uglify]: <https://www.npmjs.com/package/grunt-contrib-uglify>
 [Watch]: <https://www.npmjs.com/package/watch>
+[Minify HTML]: <https://www.npmjs.com/package/grunt-contrib-htmlmin>
