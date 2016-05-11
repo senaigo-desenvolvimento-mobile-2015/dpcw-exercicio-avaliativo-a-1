@@ -73,3 +73,34 @@
 .center{
     text-align: center !important;
 }
+
+.alert{
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    float: left;
+    width:100%;
+    height:auto;
+    z-index:999;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    .darkshadow;
+    &.info{
+        background-color: @message-info;
+    };
+    &.error{
+        background-color: @message-error;
+    };
+    &.success{
+        background-color: @message-success;
+    };
+}
+.msg{
+    width: 80%;
+    margin:0 auto;
+    text-align: left;
+    padding: 1em;
+    background-color: @message-info-secondary;    
+    .darkshadow;
+};

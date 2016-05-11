@@ -23,16 +23,20 @@ Desenvolvimento para cliente web. Prof.: Bruno Urbano Rodrigues
     * [Minify HTML]
 * [Less CSS pre-processor]
 
-### Instalação
+### Instalação das depêndencias
+
+Instalação [Npm]
 
 ```shell
 $ npm install
 ```
 
-### Execução
+### Execução para desenvolvimento
+
+Instalação [Grunt CLI]
 
 ``` shell
-$ node
+$ grunt
 ```
 
 ### Estrutura do projeto
@@ -76,3 +80,5 @@ $ node
 [Uglify]: <https://www.npmjs.com/package/grunt-contrib-uglify>
 [Watch]: <https://www.npmjs.com/package/watch>
 [Minify HTML]: <https://www.npmjs.com/package/grunt-contrib-htmlmin>
+[Npm]: <https://www.npmjs.com/package/npm>
+[Grunt CLI]: <http://gruntjs.com/getting-started>

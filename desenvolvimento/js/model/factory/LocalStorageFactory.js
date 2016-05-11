@@ -8,21 +8,8 @@ function LocalStorageFactory(){}
  * @param {String} Tipo de pessoa que será persistido
  */
 LocalStorageFactory.prototype.salvar = function(Objeto){
-    localStorage.setItem(
-        Objeto.getId(),
-        JSON.stringify(Objeto)
-    );
-};
-/**
- * Editar
- * @param {Object} Objeto a ser persistido
- * @param {String} Tipo de pessoa que será persistido
- */
-LocalStorageFactory.prototype.editar = function(Objeto){
-    localStorage.setItem(
-        Objeto.getId(),
-        JSON.stringify(Objeto)
-    );
+    localStorage.setItem(Objeto.getId(),JSON.stringify(Objeto));
+    return true;
 };
 /**
  * Exclir
@@ -30,6 +17,7 @@ LocalStorageFactory.prototype.editar = function(Objeto){
  */
 LocalStorageFactory.prototype.excluir = function(id){
     localStorage.removeItem(id);
+    return true;
 };
 /**
  * Listar por id

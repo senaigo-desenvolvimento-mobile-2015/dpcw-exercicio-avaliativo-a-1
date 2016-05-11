@@ -4,30 +4,52 @@
 /**
 * Persistencia dos dados no storage
 */
+var contador = 0;
 var salvar = function(){
-    var storageFactory = new LocalStorageFactory();
-    var objPessoa = {};
-    if(pessoafisica.checked){
-        objPessoa = new PessoaFisica();
-        objPessoa.setCpf(cpf.value);
-    }else{
-        objPessoa = new PessoaJuridica();
-        objPessoa.setCnpj(cnpj.value);
-        objPessoa.setInscricaoEstadual(inscricaoEstadual.value);
+    if(validar()){
+        var storageFactory = new LocalStorageFactory();
+        var objPessoa = {};
+        if(pessoafisica.checked){
+            objPessoa = new PessoaFisica();
+            objPessoa.setCpf(cpf.value);
+        }else{
+            objPessoa = new PessoaJuridica();
+            objPessoa.setCnpj(cnpj.value);
+            objPessoa.setInscricaoEstadual(inscricaoEstadual.value);
+        }
+        objPessoa.setId(id.value);
+        objPessoa.setNome(nome.value);
+        objPessoa.setEndereco(endereco.value);
+        /* Telefone */
+        var objTelefone = new Telefone();
+        objTelefone.setNumero(telefone.value);
+        objPessoa.setTelefone(objTelefone.getNumero());
+        /* Salva */
+        if(storageFactory.salvar(objPessoa)){
+           output("success","Cadastrado com sucesso!", function(){
+               addrow(objPessoa, incrementaContador());
+           });
+        }else{
+           output("info","Erro ao realizar cadastro.");
+        }
     }
-    objPessoa.setId(id.value);
-    objPessoa.setNome(nome.value);
-    objPessoa.setEndereco(endereco.value);
-    // Telefone
-    var objTelefone = new Telefone();
-    objTelefone.setNumero(telefone.value);
-    objPessoa.setTelefone(objTelefone.getNumero());
-    // Salva
-    storageFactory.salvar(objPessoa);
 };
+/**
+ * Exclusão do dado no storage
+ */
 var excluir = function(id){
     var storageFactory = new LocalStorageFactory();
-    storageFactory.excluir(id);
+    if(storageFactory.excluir(id)){
+        output("success","Registro removido com sucesso!", function(){
+            removeDomElemment(id, decrementaContador());
+        });
+    }else{
+        output("info","Erro ao realizar cadastro.");
+    }
+};
+var editar = function(id){
+    var storageFactory = new LocalStorageFactory();
+    preencherCamposParaEdicao(storageFactory.consultarPorId(id));
 };
 /**
  * Lista os itens cadastrados no load da página
@@ -38,12 +60,12 @@ var listarItens = function(){
     var key;
     var storage;
     var tr, td;
-    var count = 0;
     if(Object.keys(items).length > 0){
         for(key in items){
             storage = JSON.parse(items[key]);
             tr = listagem.insertRow(listagem.rows.length);
             td = tr.insertCell(tr.cells.length);
+            tr.id = storage.id;
             td.innerHTML = storage.id;
             td = tr.insertCell(tr.cells.length);
             td.innerHTML = storage.nome;
@@ -60,10 +82,12 @@ var listarItens = function(){
             td.setAttribute("align", "center");
             td = tr.insertCell(tr.cells.length);
             td.innerHTML = '<button type="button" class="bt-editar" name="button" title="Editar" alt="Editar" onclick="editar(\`'+storage.id+'\`);">&#x261D;</button> <button type="button" name="button" title="Excluir" alt="Excluir" class="bt-excluir" onclick="excluir(\`'+storage.id+'\`);">&#x2672;</button>';
-            count++;
+            incrementaContador();
         }
-        tbFoot.innerHTML = "Total de <b>"+count+"</b> registro(s)";
+        tbFoot.innerHTML = 'Total de <b>'+contador+'<b> registro(s)';
     }else{
-        listagem.innerHTML = '<tr><td colspan="6">N&atilde;o h&aacute; dados cadastrados at&eacute; o momento</td></tr>';
+        if(contador <= 0){
+            listagem.innerHTML = '<tr><td colspan="6" id="message-empty">N&atilde;o h&aacute; dados cadastrados em seu navegador at&eacute; o momento</td></tr>';
+        }
     }
 };
