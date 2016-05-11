@@ -15,17 +15,15 @@
             <h1>Exerc&iacute;cio Avaliativo A1</h1>
         </section>
     </header>
-    <section class="container">
+    <div class="container">
         <!-- Navigator -->
-        <section id="navigation">
-            <nav>
-                <ul>
-                    <li><a href="https://github.com/senaigo-desenvolvimento-mobile-2015/dpcw-exercicio-avaliativo-a-1#readme" target="_blank">Sobre o projeto</a></li>
-                </ul>
-            </nav>
-        </section>
+        <nav>
+            <ul>
+                <li><a href="https://github.com/senaigo-desenvolvimento-mobile-2015/dpcw-exercicio-avaliativo-a-1#readme" target="_blank">Sobre o projeto</a></li>
+            </ul>
+        </nav>
         <!-- Conteúdo -->
-        <section id="sectionBody">
+        <div id="sectionBody">
             <!-- Formulário -->
             <form class="formulario" action="javascript:void(0)" method="post">
                 <fieldset>
@@ -35,7 +33,7 @@
                             <label class="radio">
                                 <input type="radio" name="Tipopessoa" id="pessoafisica" onClick="checkPessoaFisica()" value="0" checked>
                                 Pessoa Fisica
-                            </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            </label>&nbsp;
                             <label class="radio">
                                 <input type="radio" name="Tipopessoa" id="pessoajuridica" onClick="checkPessoaJuridica()" value="1">
                                 Pessoa Juridica
@@ -77,7 +75,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <button type="button" name="button" onclick="salvar();">Salvar</button>
+                        <button type="button" name="button" onclick="salvar();">Salvar</button>&nbsp;
                         <button type="button" name="button" onclick="inputClear();">Novo registro</button>
                     </div>
                 </fieldset>
@@ -85,35 +83,31 @@
             <!-- Listagem -->
             <fieldset>
                 <legend>Listagem</legend>
-                    <article id="tableList">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="w5 center">Id</th>
-                                    <th class="w20">Nome</th>
-                                    <th class="w20">Endere&ccedil;o</th>
-                                    <th class="w10">Telefone</th>
-                                    <th class="w20">Documento #</th>
-                                    <th class="w10 center">&#x2699;</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tblistagem"></tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="6" id="tbfoot"></td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </article>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="w5 center">Id</th>
+                                <th class="w20">Nome</th>
+                                <th class="w20">Endere&ccedil;o</th>
+                                <th class="w10">Telefone</th>
+                                <th class="w20">Documento #</th>
+                                <th class="w10 center">&#x2699;</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblistagem"></tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" id="tbfoot"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
             </fieldset>
-        </section> <!-- Fecha section conteudo -->
-    </section> <!-- Fecha section container -->
+        </div> <!-- Fecha section conteudo -->
+    </div> <!-- Fecha section container -->
     <!-- Rodapé -->
     <footer>
-        <section id="about">
-            <p>SENAI - Projeto e desenvolvimento de software para mobile 2016 | Desenvolvimento para cliente web - Prof. Bruno Urbano Rodrigues</p>
-            <p><a href="http://fabricionogueira.eti.br" target="_blank">&copy;Fabricio Nogueira</a></p>
-        </section>
+        <p>SENAI - Projeto e desenvolvimento de software para mobile 2016 | Desenvolvimento para cliente web - Prof. Bruno Urbano Rodrigues</p>
+        <p><a href="http://fabricionogueira.eti.br" target="_blank">&copy;Fabricio Nogueira</a></p>
     </footer>
     <!-- Botão github -->
     <a href="https://github.com/senaigo-desenvolvimento-mobile-2015/dpcw-exercicio-avaliativo-a-1/tree/master/desenvolvimento" title="Veja o c&oacute;digo fonte no GitHub" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250"><title>Veja o c&oacute;digo fonte no GitHub</title><path d="M0 0h250v250"></path><path d="M127.4 110c-14.6-9.2-9.4-19.5-9.4-19.5 3-7 1.5-11 1.5-11-1-6.2 3-2 3-2 4 4.7 2 11 2 11-2.2 10.4 5 14.8 9 16.2" fill="currentColor" style="transform-origin:130px 110px" class="octo-arm"></path><path d="M113.2 114.3s3.6 1.6 4.7.6l15-13.7c3-2.4 6-3 8.2-2.7-8-11.2-14-25 3-41 4.7-4.4 10.6-6.4 16.2-6.4.6-1.6 3.6-7.3 11.8-10.7 0 0 4.5 2.7 6.8 16.5 4.3 2.7 8.3 6 12 9.8 3.3 3.5 6.7 8 8.6 12.3 14 3 16.8 8 16.8 8-3.4 8-9.4 11-11.4 11 0 5.8-2.3 11-7.5 15.5-16.4 16-30 9-40 .2 0 3-1 7-5.2 11l-13.3 11c-1 1 .5 5.3.8 5z" fill="currentColor" class="octo-body"></path></svg></a>
