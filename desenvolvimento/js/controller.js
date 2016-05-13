@@ -2,9 +2,8 @@
 * Controlador Principal
 */
 /**
-* Persistencia dos dados no storage
-*/
-var contador = 0;
+ * Persiste os dados no storage
+ */
 var salvar = function(){
     if(validar()){
         var storageFactory = new LocalStorageFactory();
@@ -26,11 +25,14 @@ var salvar = function(){
         objPessoa.setTelefone(objTelefone.getNumero());
         /* Salva */
         if(storageFactory.salvar(objPessoa)){
-           output("success","Cadastrado com sucesso!", function(){
-               addrow(objPessoa, incrementaContador());
+           calert("success","Cadastrado com sucesso!", function(){
+               removeDomElemment(objPessoa.getId());
+               addrow(objPessoa);
+               novoRegitro();
+               contarRegistros();
            });
         }else{
-           output("info","Erro ao realizar cadastro.");
+           calert("info","Erro ao realizar cadastro.");
         }
     }
 };
@@ -40,16 +42,27 @@ var salvar = function(){
 var excluir = function(id){
     var storageFactory = new LocalStorageFactory();
     if(storageFactory.excluir(id)){
-        output("success","Registro removido com sucesso!", function(){
-            removeDomElemment(id, decrementaContador());
+        calert("success","Registro removido com sucesso!", function(){
+            removeDomElemment(id);
+            limparCampos();
+            contarRegistros();
         });
     }else{
-        output("info","Erro ao realizar cadastro.");
+        calert("info","Erro ao realizar cadastro.");
     }
 };
+/**
+ * Editar regitros selecionado por id.
+ */
 var editar = function(id){
     var storageFactory = new LocalStorageFactory();
     preencherCamposParaEdicao(storageFactory.consultarPorId(id));
+};
+/**
+ * Habilita o formulário para cadastro de um novo registro.
+ */
+var novoRegitro = function(){
+    limparCampos();
 };
 /**
  * Lista os itens cadastrados no load da página
@@ -82,12 +95,7 @@ var listarItens = function(){
             td.setAttribute("align", "center");
             td = tr.insertCell(tr.cells.length);
             td.innerHTML = '<button type="button" class="bt-editar" name="button" title="Editar" alt="Editar" onclick="editar(\`'+storage.id+'\`);">&#x261D;</button> <button type="button" name="button" title="Excluir" alt="Excluir" class="bt-excluir" onclick="excluir(\`'+storage.id+'\`);">&#x2672;</button>';
-            incrementaContador();
-        }
-        tbFoot.innerHTML = 'Total de <b>'+contador+'<b> registro(s)';
-    }else{
-        if(contador <= 0){
-            listagem.innerHTML = '<tr><td colspan="6" id="message-empty">N&atilde;o h&aacute; dados cadastrados em seu navegador at&eacute; o momento</td></tr>';
         }
     }
+    contarRegistros();
 };
