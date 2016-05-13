@@ -126,7 +126,7 @@ nav{
         };
         a{
             display: block;
-            color: white !important;            
+            color: white !important;
             padding: 14px 16px;
             text-decoration: none;
             &:hover{
@@ -188,5 +188,8 @@ form{
         height: 30px;
         line-height:15px;
         margin: 2px 6px 16px 0px;
+        &[readonly="true"]{
+            background-color:@somente-leitura;
+        };
     };
 }

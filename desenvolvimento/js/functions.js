@@ -2,41 +2,41 @@
  * Funções gerais
  *
  */
-var runTime = null;
 /**
  * Habilita campos para pessoa fisica
  */
-var checkPessoaFisica = function(limparCampos){
+var checkPessoaFisica = function(act){
     divCnpj.classList.add("hidden");
     divInscEstadual.classList.add("hidden");
     divCpf.classList.remove("hidden");
     pessoafisica.checked = true;
-    if(typeof limparCampos === "undefined"){
-        inputClear();
+    if(typeof act === "undefined"){
+        limparCampos();
     }
 };
 /**
  * Habilita campos para pessoa juridica
  */
-var checkPessoaJuridica = function(limparCampos){
+var checkPessoaJuridica = function(act){
     divCnpj.classList.remove("hidden");
     divInscEstadual.classList.remove("hidden");
     divCpf.classList.add("hidden");
     pessoajuridica.checked = true;
-    if(typeof limparCampos === "undefined"){
-        inputClear();
+    if(typeof act === "undefined"){
+        limparCampos();
     }
 };
 /**
  * Limpa todos os inputs da tela e coloca o focus no campo id.
  */
-var inputClear = function(){
+var limparCampos = function(){
     var elements = document.getElementsByTagName("input");
     for (var i=0; i < elements.length; i++) {
         if (elements[i].type == "text") {
             elements[i].value = "";
         }
     }
+    modoEdicao(false);
     id.focus();
 };
 /**
@@ -61,14 +61,14 @@ var validar = function(){
         for(var e in error){
             ret += '<p>-&nbsp;'+error[e]+'</p>';
         }
-        output('error', ret);
+        calert('error', ret);
         return false;
     }
  };
 /**
  * Cria mensagens de alerta ao usuário dinamicamente.
  */
-var output = function(tipo, message, callback){
+var calert = function(tipo, message, callback){
     removeDomElemment("output");
     clearTimeout(defineTime);
     var div = document.createElement("div");
@@ -144,7 +144,11 @@ var defineTime = function(){
          callback();
      }
  };
- var preencherCamposParaEdicao = function(obj){
+/**
+ * Preenche o formulário para edição do registro
+ */
+var preencherCamposParaEdicao = function(obj){
+    modoEdicao(true);
     id.value = obj.id;
     nome.value = obj.nome;
     endereco.value = obj.endereco;
@@ -157,18 +161,25 @@ var defineTime = function(){
         inscricaoEstadual.value = obj.inscricaoEstadual;
         checkPessoaJuridica(false);
     }
- };
-/**
- * Incrementa o contador
- */
-var incrementaContador = function(){
-    var p = ++contador;
-    tbFoot.innerHTML = 'Total de <b>'+p+'</b> registro(s)';
 };
 /**
- * Decrementa o contador
+ * Prepara o forulário para edição
  */
-var decrementaContador = function(){
-    var p = --contador;
-    tbFoot.innerHTML = 'Total de <b>'+p+'</b> registro(s)';
+var modoEdicao = function(editar){
+    if(editar){
+        id.setAttribute("readonly", "true");
+    }else{
+        id.removeAttribute("readonly");
+    }
+};
+/**
+ * Conta a quantidade de registros na tabela
+ */
+var contarRegistros = function(){
+    var numRegistros = document.querySelectorAll("tbody tr[id]").length;
+    if(numRegistros <= 0){
+        listagem.innerHTML = '<tr><td colspan="6" id="message-empty">N&atilde;o h&aacute; dados cadastrados em seu navegador at&eacute; o momento</td></tr>';
+    }
+    tbFoot.innerHTML = 'Total de <b>'+numRegistros+'</b> registro(s)';
+    return numRegistros;
 };
