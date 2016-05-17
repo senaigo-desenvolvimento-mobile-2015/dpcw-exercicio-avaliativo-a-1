@@ -99,3 +99,18 @@ var listarItens = function(){
     }
     contarRegistros();
 };
+
+var box = document.getElementById("box"), x=0, y=20;
+
+timers.add(function(){
+    box.style.left = x+"px";
+    if(++x > 50) return false;
+});
+
+timers.add(function(){
+    box.style.top = y+"px";
+    y +=2;
+    if(y > 120) return false;
+});
+
+timers.start();
