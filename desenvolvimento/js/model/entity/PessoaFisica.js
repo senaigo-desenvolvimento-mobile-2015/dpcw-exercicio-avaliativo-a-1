@@ -1,16 +1,17 @@
 /**
  * Pessoa Fisica classe filha de Pessoa.
  */
-function PessoaFisica(){}
+(function (){
+    "use strict";
+    var cpf;
 
-var cpf;
+    PessoaFisica.prototype = new Pessoa();
 
-PessoaFisica.prototype = new Pessoa();
+    PessoaFisica.prototype.setCpf = function(cpf){
+        this.cpf = cpf;
+    };
 
-PessoaFisica.prototype.setCpf = function(cpf){
-    this.cpf = cpf;
-};
-
-PessoaFisica.prototype.getCpf = function(){
-    return this.cpf;
-};
+    PessoaFisica.prototype.getCpf = function(){
+        return this.cpf;
+    };
+}(PessoaFisica));

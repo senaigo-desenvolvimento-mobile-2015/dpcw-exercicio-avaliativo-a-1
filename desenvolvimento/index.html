@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/main.min.css" media="screen">
 </head>
 <!-- No load da página, todos os itens cadastrados no localStorage são carregados -->
-<body onload="listarItens()">
+<body onload="Controlador.listarItens()">
     <header>
         <section id="titleSection">
             <h1>Exerc&iacute;cio Avaliativo A1</h1>
@@ -25,17 +25,17 @@
         <!-- Conteúdo -->
         <section id="sectionBody">
             <!-- Formulário -->
-            <form class="formulario" action="javascript:void(0)" method="post">
+            <form class="formulario" action="javascript:void(0)" method="post" id="form">
                 <fieldset>
                     <legend>Formul&aacute;rio</legend>
                     <div class="row">
                         <div class="col-1">
                             <label class="radio">
-                                <input type="radio" name="Tipopessoa" id="pessoafisica" onClick="checkPessoaFisica()" value="0" checked>
+                                <input type="radio" name="Tipopessoa" id="pessoafisica" onClick="Functions.checkPessoaFisica()" value="0" checked>
                                 Pessoa Fisica
                             </label>&nbsp;
                             <label class="radio">
-                                <input type="radio" name="Tipopessoa" id="pessoajuridica" onClick="checkPessoaJuridica()" value="1">
+                                <input type="radio" name="Tipopessoa" id="pessoajuridica" onClick="Functions.checkPessoaJuridica()" value="1">
                                 Pessoa Juridica
                             </label>
                         </div>
@@ -75,8 +75,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <button type="button" name="button" onclick="salvar();">Salvar</button>&nbsp;
-                        <button type="button" name="button" onclick="novoRegitro();">Novo registro</button>
+                        <button type="button" name="button" onclick="Controlador.salvar();">Salvar</button>&nbsp;
+                        <button type="button" name="button" onclick="Controlador.novoRegistro();">Novo registro</button>
                     </div>
                 </fieldset>
             </form>
@@ -104,6 +104,7 @@
             </fieldset>
         </section> <!-- Fecha section conteudo -->
     </section> <!-- Fecha section container -->
+    <div id="box"></div>
     <!-- Rodapé -->
     <footer>
         <p>SENAI - Projeto e desenvolvimento de software para mobile 2016 | Desenvolvimento para cliente web - Prof. Bruno Urbano Rodrigues</p>

@@ -1,5 +1,5 @@
 /**
- * Header
+ * Header, escopo global
  */
 if(typeof(Storage) === "undefined") {
     alert("Atenção!\n\nNão há suporte para o armazenamento em seu navegador atual.\nO que for feito, não será persistido.");
@@ -23,3 +23,18 @@ var listagem = document.getElementById("tblistagem");
 var tbFoot = document.getElementById("tbfoot");
 var tableList = document.getElementById("tableList");
 var regCount = document.getElementById("regCount");
+var box = document.getElementById("box");
+var form = document.getElementById("form");
+var x = 0;
+var y = 20;
+var tr, td;
+/**
+ * Objetos
+ */
+function Pessoa(){}
+function PessoaFisica(){}
+function PessoaJuridica(){}
+function Telefone(){}
+function LocalStorageFactory(){}
+var Controlador = {};
+var Functions = {};

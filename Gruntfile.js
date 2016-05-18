@@ -29,6 +29,7 @@
                             'desenvolvimento/js/*/*/*.js',
                             'desenvolvimento/js/functions.js',
                             'desenvolvimento/js/controller.js',
+                            'desenvolvimento/js/footer.js',
                         ]
                     }
                 }
