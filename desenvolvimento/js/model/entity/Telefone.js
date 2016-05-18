@@ -1,14 +1,15 @@
 /**
  * Telefone Agregado à pessoa.
  */
-function Telefone(){}
+(function (){
+    "use strict";
+    var numero;
 
-var numero;
+    Telefone.prototype.setNumero = function(numero){
+        this.numero = numero;
+    };
 
-Telefone.prototype.setNumero = function(numero){
-    this.numero = numero;
-};
-
-Telefone.prototype.getNumero = function(){
-    return this.numero;
-};
+    Telefone.prototype.getNumero = function(){
+        return this.numero;
+    };
+}(Telefone));
