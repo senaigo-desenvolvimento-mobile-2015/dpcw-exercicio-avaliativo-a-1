@@ -2,26 +2,26 @@
  * Chamadas globais
  */
 
+/*Foco no id*/
+Componente.id.focus();
 /*
- * Movimento da imagem no eixo x
- */
-Functions.timers.add(function(){
-    box.style.left = x+"px";
-    if(++x > 50) return false;
+* Movimento da imagem no eixo x
+*/
+Obj.Functions.timers.add(function(){
+    Componente.box.style.left = Componente.x+"px";
+    if(++Componente.x > 50) return false;
 });
 /*
  * Movimento da imagem no eixo y
  */
-Functions.timers.add(function(){
-    box.style.top = y+"px";
-    y +=2;
-    if(y > 120) return false;
+Obj.Functions.timers.add(function(){
+    Componente.box.style.top = Componente.y+"px";
+    Componente.y +=2;
+    if(Componente.y > 120) return false;
 });
 /*
  * Executando a animação
  */
-Functions.timers.start();
-/*Foco no id*/
-id.focus();
+Obj.Functions.timers.start();
 /*Limpa os campos no load do formulário*/
-Functions.limparCampos();
+Obj.Functions.limparCampos();
