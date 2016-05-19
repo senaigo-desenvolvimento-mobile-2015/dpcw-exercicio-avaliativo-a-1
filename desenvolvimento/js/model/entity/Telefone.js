@@ -5,11 +5,17 @@
     "use strict";
     var numero;
 
-    Telefone.prototype.setNumero = function(numero){
+    // Construtor
+    Obj.Telefone.prototype = function(numero){
         this.numero = numero;
     };
 
-    Telefone.prototype.getNumero = function(){
+    Obj.Telefone.prototype.setNumero = function(numero){
+        this.numero = numero;
+    };
+
+    Obj.Telefone.prototype.getNumero = function(){
         return this.numero;
     };
-}(Telefone));
+
+}());

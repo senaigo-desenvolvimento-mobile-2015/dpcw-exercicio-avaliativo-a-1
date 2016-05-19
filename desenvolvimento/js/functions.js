@@ -3,15 +3,15 @@
  */
 (function (){
 	"use strict";
-    Functions = {
+    Obj.Functions = {
         /**
          * Habilita campos para pessoa fisica
          */
         checkPessoaFisica : function(act){
-            divCnpj.classList.add("hidden");
-            divInscEstadual.classList.add("hidden");
-            divCpf.classList.remove("hidden");
-            pessoafisica.checked = true;
+            Componente.divCnpj.classList.add("hidden");
+            Componente.divInscEstadual.classList.add("hidden");
+            Componente.divCpf.classList.remove("hidden");
+            Componente.pessoafisica.checked = true;
             if(typeof act === "undefined"){
                 this.limparCampos();
             }
@@ -20,10 +20,10 @@
          * Habilita campos para pessoa juridica
          */
         checkPessoaJuridica : function(act){
-            divCnpj.classList.remove("hidden");
-            divInscEstadual.classList.remove("hidden");
-            divCpf.classList.add("hidden");
-            pessoajuridica.checked = true;
+            Componente.divCnpj.classList.remove("hidden");
+            Componente.divInscEstadual.classList.remove("hidden");
+            Componente.divCpf.classList.add("hidden");
+            Componente.pessoajuridica.checked = true;
             if(typeof act === "undefined"){
                 this.limparCampos();
             }
@@ -39,7 +39,7 @@
                 }
             }
             this.modoEdicao(false);
-            id.focus();
+            Componente.id.focus();
         },
         /**
          * Validação dos campos obrigatórios
@@ -97,7 +97,7 @@
          */
         defineTime : function(){
             return setTimeout(function(){
-                Functions.removeDomElemment("output");
+                Obj.Functions.removeDomElemment("output");
             }, 10000); /*10 sec.*/
         },
         /**
@@ -118,9 +118,9 @@
          * Adiciona linha
          */
          addrow : function(obj, callback){
+             var tr, td;
              this.removeDomElemment("message-empty");
-
-             tr = listagem.insertRow(listagem.rows.length);
+             tr = Componente.listagem.insertRow(Componente.listagem.rows.length);
              td = tr.insertCell(tr.cells.length);
              tr.id = obj.id;
              td.innerHTML = obj.id;
@@ -138,7 +138,7 @@
              }
              td.setAttribute("align", "center");
              td = tr.insertCell(tr.cells.length);
-             td.innerHTML = '<button type="button" class="bt-editar" name="button" title="Editar" alt="Editar" onclick="Controlador.editar(\''+obj.id+'\');">&#x261D;</button> <button type="button" name="button" title="Excluir" alt="Excluir" class="bt-excluir" onclick="Controlador.excluir(\''+obj.id+'\');">&#x2672;</button>';
+             td.innerHTML = '<button type="button" class="bt-editar" name="button" title="Editar" alt="Editar" onclick="Obj.Controlador.editar(\''+obj.id+'\');">&#x261D;</button> <button type="button" name="button" title="Excluir" alt="Excluir" class="bt-excluir" onclick="Obj.Controlador.excluir(\''+obj.id+'\');">&#x2672;</button>';
              /*
               *  Executa o callback caso tenha sido chamado.
               */
@@ -151,16 +151,16 @@
          */
         preencherCamposParaEdicao : function(obj){
             this.modoEdicao(true);
-            id.value = obj.id;
-            nome.value = obj.nome;
-            endereco.value = obj.endereco;
-            telefone.value = obj.telefone;
+            Componente.id.value = obj.id;
+            Componente.nome.value = obj.nome;
+            Componente.endereco.value = obj.endereco;
+            Componente.telefone.value = obj.telefone;
             if(typeof obj.cpf !== 'undefined'){
-                cpf.value = obj.cpf;
+                Componente.cpf.value = obj.cpf;
                 this.checkPessoaFisica(false);
             }else{
-                cnpj.value =  obj.cnpj;
-                inscricaoEstadual.value = obj.inscricaoEstadual;
+                Componente.cnpj.value = obj.cnpj;
+                Componente.inscricaoEstadual.value = obj.inscricaoEstadual;
                 this.checkPessoaJuridica(false);
             }
         },
@@ -169,9 +169,9 @@
          */
         modoEdicao : function(editar){
             if(editar){
-                id.setAttribute("readonly", "true");
+                Componente.id.setAttribute("readonly", "true");
             }else{
-                id.removeAttribute("readonly");
+                Componente.id.removeAttribute("readonly");
             }
         },
         /**
@@ -180,9 +180,9 @@
         contarRegistros : function(){
             var numRegistros = document.querySelectorAll("tbody tr[id]").length;
             if(numRegistros <= 0){
-                listagem.innerHTML = '<tr><td colspan="6" id="message-empty">N&atilde;o h&aacute; dados cadastrados em seu navegador at&eacute; o momento</td></tr>';
+                Componente.listagem.innerHTML = '<tr><td colspan="6" id="message-empty">N&atilde;o h&aacute; dados cadastrados em seu navegador at&eacute; o momento</td></tr>';
             }
-            tbFoot.innerHTML = 'Total de <b>'+numRegistros+'</b> registro(s)';
+            Componente.tbFoot.innerHTML = 'Total de <b>'+numRegistros+'</b> registro(s)';
             return numRegistros;
         },
         /**
@@ -199,14 +199,14 @@
                      return;
                  }
                  (function runNext(){
-                     if(Functions.timers.timers.length > 0 ){
-                         for(var i = 0; i < Functions.timers.timers.length; i++){
-                             if(Functions.timers.timers[i]() === false){
-                                 Functions.timers.timers.splice(i, 1);
+                     if(Obj.Functions.timers.timers.length > 0 ){
+                         for(var i = 0; i < Obj.Functions.timers.timers.length; i++){
+                             if(Obj.Functions.timers.timers[i]() === false){
+                                 Obj.Functions.timers.timers.splice(i, 1);
                                  i--;
                              }
                          }
-                         Functions.timers.timerID = setTimeout(runNext, 100);
+                         Obj.Functions.timers.timerID = setTimeout(runNext, 100);
                      }
                  })();
              },
@@ -216,4 +216,4 @@
             }
         }
     };
-}(Functions));
+}());

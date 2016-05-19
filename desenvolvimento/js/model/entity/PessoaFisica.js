@@ -5,13 +5,14 @@
     "use strict";
     var cpf;
 
-    PessoaFisica.prototype = new Pessoa();
+    Obj.PessoaFisica.prototype = new Obj.Pessoa();
 
-    PessoaFisica.prototype.setCpf = function(cpf){
+    Obj.PessoaFisica.prototype.setCpf = function(cpf){
         this.cpf = cpf;
     };
 
-    PessoaFisica.prototype.getCpf = function(){
+    Obj.PessoaFisica.prototype.getCpf = function(){
         return this.cpf;
     };
-}(PessoaFisica));
+
+}());

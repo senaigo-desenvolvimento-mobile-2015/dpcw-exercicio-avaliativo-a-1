@@ -1,40 +1,42 @@
 /**
  * Header, escopo global
  */
-if(typeof(Storage) === "undefined") {
-    alert("Atenção!\n\nNão há suporte para o armazenamento em seu navegador atual.\nO que for feito, não será persistido.");
-}
+(typeof(Storage) === "undefined") &&
+    alert("Atenção!\n\nNão há suporte para o armazenamento em seu navegador atual.\nO que for feito, não será persistido.");  // jshint ignore:line
 /**
  * Definição dos componentes
  */
-var id = document.getElementById("identificador");
-var nome = document.getElementById("nome");
-var endereco = document.getElementById("endereco");
-var telefone = document.getElementById("telefone");
-var cpf = document.getElementById("cpf");
-var cnpj = document.getElementById("cnpj");
-var inscricaoEstadual = document.getElementById("inscricaoEstadual");
-var pessoafisica = document.getElementById("pessoafisica");
-var pessoajuridica = document.getElementById("pessoajuridica");
-var divCnpj = document.getElementById("cnpjdiv");
-var divInscEstadual = document.getElementById("iediv");
-var divCpf = document.getElementById("cpfdiv");
-var listagem = document.getElementById("tblistagem");
-var tbFoot = document.getElementById("tbfoot");
-var tableList = document.getElementById("tableList");
-var regCount = document.getElementById("regCount");
-var box = document.getElementById("box");
-var form = document.getElementById("form");
-var x = 0;
-var y = 20;
-var tr, td;
+var Componente = {
+    id : document.getElementById("identificador"),
+    nome : document.getElementById("nome"),
+    endereco : document.getElementById("endereco"),
+    telefone : document.getElementById("telefone"),
+    cpf : document.getElementById("cpf"),
+    cnpj : document.getElementById("cnpj"),
+    inscricaoEstadual : document.getElementById("inscricaoEstadual"),
+    pessoafisica : document.getElementById("pessoafisica"),
+    pessoajuridica : document.getElementById("pessoajuridica"),
+    divCnpj : document.getElementById("cnpjdiv"),
+    divInscEstadual : document.getElementById("iediv"),
+    divCpf : document.getElementById("cpfdiv"),
+    listagem : document.getElementById("tblistagem"),
+    tbFoot : document.getElementById("tbfoot"),
+    tableList : document.getElementById("tableList"),
+    regCount : document.getElementById("regCount"),
+    box : document.getElementById("box"),
+    form : document.getElementById("form"),
+    x : 0,
+    y : 20,
+};
 /**
  * Objetos
  */
-function Pessoa(){}
-function PessoaFisica(){}
-function PessoaJuridica(){}
-function Telefone(){}
-function LocalStorageFactory(){}
-var Controlador = {};
-var Functions = {};
+var Obj = {
+    Controlador : {},
+    Functions : {},
+    Pessoa : function Pessoa(){},
+    PessoaFisica : function PessoaFisica(){},
+    PessoaJuridica : function PessoaJuridica(){},
+    Telefone : function Telefone(){},
+    LocalStorageFactory : function LocalStorageFactory(){},
+};

@@ -3,39 +3,41 @@
  */
 (function (){
     "use strict";
-    Controlador = {
+    Obj.Controlador = {
         /**
          * Persiste os dados no storage
          */
         salvar : function(){
-            if(Functions.validar()){
-                var storageFactory = new LocalStorageFactory();
+            if(Obj.Functions.validar()){
+                var storageFactory = new Obj.LocalStorageFactory();
                 var objPessoa = {};
-                if(pessoafisica.checked){
-                    objPessoa = new PessoaFisica();
-                    objPessoa.setCpf(cpf.value);
+                if(Componente.pessoafisica.checked){
+                    objPessoa = new Obj.PessoaFisica();
+                    objPessoa.setCpf(Componente.cpf.value);
                 }else{
-                    objPessoa = new PessoaJuridica();
-                    objPessoa.setCnpj(cnpj.value);
-                    objPessoa.setInscricaoEstadual(inscricaoEstadual.value);
+                    objPessoa = new Obj.PessoaJuridica();
+                    objPessoa.setCnpj(Componente.cnpj.value);
+                    objPessoa.setInscricaoEstadual(Componente.inscricaoEstadual.value);
                 }
-                objPessoa.setId(id.value);
-                objPessoa.setNome(nome.value);
-                objPessoa.setEndereco(endereco.value);
+                objPessoa.setId(Componente.id.value);
+                objPessoa.setNome(Componente.nome.value);
+                objPessoa.setEndereco(Componente.endereco.value);
                 /* Telefone */
-                var objTelefone = new Telefone();
-                objTelefone.setNumero(telefone.value);
+                var objTelefone = new Obj.Telefone();
+                objTelefone.setNumero(Componente.telefone.value);
                 objPessoa.setTelefone(objTelefone.getNumero());
                 /* Salva */
-                if(storageFactory.salvar(objPessoa)){
-                    Functions.calert("success","Cadastrado com sucesso!", function(){
-                        Functions.removeDomElemment(objPessoa.getId());
-                        Functions.addrow(objPessoa);
-                        Controlador.novoRegistro();
-                        Functions.contarRegistros();
-                    });
+                if(storageFactory.salvar(objPessoa)) {
+                    Obj.Functions.calert(
+                        "success","Cadastrado com sucesso!", function(){
+                            Obj.Functions.removeDomElemment(objPessoa.getId());
+                            Obj.Functions.addrow(objPessoa);
+                            Obj.Functions.contarRegistros();
+                        }
+                    );
+                    this.novoRegistro();
                 }else{
-                    Functions.calert("info","Erro ao realizar cadastro.");
+                    Obj.Functions.calert("info","Erro ao realizar cadastro."); // jshint ignore:line
                 }
             }
         },
@@ -43,46 +45,43 @@
          * Exclusão do dado no storage
          */
         excluir : function(id){
-            var storageFactory = new LocalStorageFactory();
-                if(storageFactory.excluir(id)){
-                Functions.calert("success","Registro removido com sucesso!", function(){
-                    Functions.removeDomElemment(id);
-                    Functions.limparCampos();
-                    Functions.contarRegistros();
-                });
-            }else{
-                Functions.calert("info","Erro ao realizar cadastro.");
-            }
+            var storageFactory = new Obj.LocalStorageFactory();
+            (storageFactory.excluir(id)) ? Obj.Functions.calert(
+                "success","Registro removido com sucesso!", function(){
+                    Obj.Functions.removeDomElemment(id);
+                    Obj.Functions.limparCampos();
+                    Obj.Functions.contarRegistros();
+            }) : Obj.Functions.calert("info","Erro ao realizar cadastro."); // jshint ignore:line
         },
         /**
          * Editar regitros selecionado por id.
          */
         editar : function(id){
-            var storageFactory = new LocalStorageFactory();
-            Functions.preencherCamposParaEdicao(storageFactory.consultarPorId(id));
-            form.scrollTop = -100;
-            nome.focus();
+            var storageFactory = new Obj.LocalStorageFactory();
+            Obj.Functions.preencherCamposParaEdicao(storageFactory.consultarPorId(id));
+            Componente.form.scrollTop = -100;
+            Componente.nome.focus();
         },
         /**
          * Habilita o formulário para cadastro de um novo registro.
          */
         novoRegistro : function(){
-            Functions.limparCampos();
+            Obj.Functions.limparCampos();
         },
         /**
          * Lista os itens cadastrados no load da página
          */
         listarItens : function(){
-            var storageFactory = new LocalStorageFactory();
+            var storageFactory = new Obj.LocalStorageFactory();
             var items = storageFactory.listarTodos();
             var key;
             var storage;
             if(Object.keys(items).length > 0){
                 for(key in items){
-                    Functions.addrow(JSON.parse(items[key]));
+                    Obj.Functions.addrow(JSON.parse(items[key]));
                 }
             }
-            Functions.contarRegistros();
+            Obj.Functions.contarRegistros();
         }
     };
-}(Controlador));
+}());
