@@ -74,6 +74,27 @@ $ grunt
 └── README.md
 ```
 
+### Para testes de cadastro
+
+```javascript
+/*
+ * Cadastrar uma grande quantidade de registro 
+ */
+var elements = document.getElementsByTagName("input");
+for(var t = 0; t < 100; t++){
+  for (var i=0; i < elements.length; i++) {
+    if (elements[i].type == "text") {
+      elements[i].value = "v"+Math.random();
+    }
+  }
+  Obj.Controlador.salvar();
+}
+/*
+ * Limpar todos os dados do storage
+ */
+localStorage.clear();
+```
+
 [Less CSS pre-processor]: <http://lesscss.org/>
 [Grunt]: <http://gruntjs.com/>
 [Grunt-contrib-less]: <https://www.npmjs.com/package/grunt-contrib-less>
